@@ -22,3 +22,28 @@ mongoose
   .catch((error) => {
     console.log("error connecting to MongoDB:", error.message);
   });
+
+const ticketsSchema = new mongoose.Schema({
+  title: { type: String, require: true },
+  content: { type: String, require: true },
+  userEmail: { type: String, require: true },
+  done: { type: Boolean, default: false, require: false },
+  creationTime: { type: Number, default: new Date() },
+  labels: { type: Array, require: false },
+});
+
+const Ticket = mongoose.model("Ticket", ticketsSchema);
+
+app.get("/api/tickets", (req, res) => {
+  try {
+    Ticket.find({}).then((tickets) => {
+      console.log(tickets);
+      res.status(200).json(tickets);
+    });
+  } catch (error) {
+    console.log(error);
+    res.send("Something went wrong... Error: " + error);
+  }
+});
+
+module.exports = Ticket;
