@@ -46,4 +46,40 @@ app.get("/api/tickets", (req, res) => {
   }
 });
 
-module.exports = Ticket;
+app.patch("/api/tickets/:ticketId/done", (req, res) => {
+  try {
+    Ticket.findByIdAndUpdate(
+      req.params.ticketId,
+      { done: true },
+      (err, result) => {
+        if (err) {
+          throw new Error("Sorry, We Couldn't Update this ticket");
+        } else {
+          res.status(200).json({ updated: true });
+        }
+      }
+    );
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+});
+
+app.patch("/api/tickets/:ticketId/undone", (req, res) => {
+  try {
+    Ticket.findByIdAndUpdate(
+      req.params.ticketId,
+      { done: false },
+      (err, result) => {
+        if (err) {
+          throw new Error("Sorry, We Couldn't Update this ticket");
+        } else {
+          res.status(200).json({ updated: true });
+        }
+      }
+    );
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+});
