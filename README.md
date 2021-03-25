@@ -7,4 +7,4 @@ A ticket with a green shield next to him is a "Done" ticket, otherwise it's "UnD
 To hide a ticket, press the "Hide" button on the wanted ticket. To restore all hidden tickets hit the restore button on the top.
 This site use MongoDb Atlas and Heroku
 
-A link to the heroku website - [here]
+A link to the heroku website - [here]()
