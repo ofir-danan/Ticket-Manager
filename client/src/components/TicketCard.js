@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-const TicketCard = ({ ticket, hidden, hiddenTickets, restore }) => {
+const TicketCard = ({
+  ticket,
+  hidden,
+  hiddenTickets,
+  restore,
+  getLabelTickets,
+}) => {
   const [hide, setHide] = useState(false);
 
   const hideTicket = () => {
@@ -29,7 +35,9 @@ const TicketCard = ({ ticket, hidden, hiddenTickets, restore }) => {
         <span>{ticket.userEmail}</span> | {<span>{date}</span>} |{" "}
         {ticket.labels &&
           ticket.labels.map((label) => (
-            <button className="label">{label}</button>
+            <button className="label" onClick={() => getLabelTickets(label)}>
+              {label}
+            </button>
           ))}
       </p>
     </div>

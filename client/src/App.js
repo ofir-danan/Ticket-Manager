@@ -24,21 +24,22 @@ function App() {
     setHiddenCounter(0);
   };
 
+  const getLabelTickets = async (label) => {
+    const { data } = await axios.get(`api/tickets/${label}`);
+    setTickets(data);
+  };
+
   const onSearchChange = async (e) => {
     setSearch(e.target.value);
+    const { data } = await axios.get(
+      `api/tickets?searchText=${e.target.value}`
+    );
+    setTickets(data);
   };
 
   useEffect(() => {
-    const fetchFilteredTickets = async () => {
-      const { data } = await axios.get(`/api/tickets?searchText=${search}`);
-      setTickets(data);
-    };
-    fetchFilteredTickets();
-  }, [search]);
-
-  useEffect(() => {
     const fetcAllTickets = async () => {
-      const { data } = await axios.get("/api/tickets");
+      const { data } = await axios.get("api/tickets");
       setTickets(data);
     };
     fetcAllTickets();
@@ -58,6 +59,7 @@ function App() {
         hidden={hidden}
         hiddenTickets={hiddenTickets}
         restore={restore}
+        getLabelTickets={getLabelTickets}
       />
     </div>
   );

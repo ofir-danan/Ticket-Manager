@@ -1,7 +1,13 @@
 import React from "react";
 import TicketCard from "./TicketCard";
 
-const TicketsArea = ({ tickets, hidden, hiddenTickets, restore }) => {
+const TicketsArea = ({
+  tickets,
+  hidden,
+  hiddenTickets,
+  restore,
+  getLabelTickets,
+}) => {
   return (
     <div>
       {tickets?.map((ticket, i) => (
@@ -11,6 +17,7 @@ const TicketsArea = ({ tickets, hidden, hiddenTickets, restore }) => {
           hidden={hidden}
           hiddenTickets={hiddenTickets}
           restore={restore}
+          getLabelTickets={getLabelTickets}
         />
       ))}
     </div>

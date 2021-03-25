@@ -14,6 +14,18 @@ router.get("/", (req, res) => {
   }
 });
 
+router.get("/:label", (req, res) => {
+  try {
+    const label = req.params.label;
+    Ticket.find({ labels: label }).then((tickets) => {
+      res.status(200).json(tickets);
+    });
+  } catch (error) {
+    console.log(error);
+    res.send("Something went wrong... Error: " + error);
+  }
+});
+
 router.patch("/:ticketId/done", (req, res) => {
   try {
     Ticket.findByIdAndUpdate(

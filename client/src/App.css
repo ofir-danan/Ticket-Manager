@@ -5,3 +5,22 @@
 .ticket {
   display: block;
 }
+
+.label {
+  border: none;
+  background-color: rgba(138, 156, 235, 0.562);
+  transition: 0.7s;
+  font-family: "Changa", sans-serif;
+  font-weight: bolder;
+  font-size: 16px;
+  border-radius: 4px;
+  outline: none;
+  margin: 4px;
+}
+
+.label:hover {
+  letter-spacing: 2px;
+  color: black;
+  background: transparent;
+  box-shadow: inset 0 -54px 0 0 rgb(138, 156, 235);
+}
