@@ -1,38 +1,160 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.main {
+  background: #8e9eab; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #eef2f3,
+    #9ea9b3
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #eef2f3,
+    #b4bcc2
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-family: "Nanum Gothic", sans-serif;
+}
+
+button,
+input {
+  outline: none;
+}
+
+.hide-ticket {
+  display: none;
+}
+
+.ticket {
+  display: block;
+}
+
+.label {
+  border: none;
+  background-color: rgba(41, 42, 43, 0.562);
+  transition: 0.7s;
+  font-family: "Changa", sans-serif;
+  font-size: 16px;
+  border-radius: 4px;
+  outline: none;
+  margin: 4px;
   color: white;
+  padding: 5px;
 }
 
-.App-link {
-  color: #61dafb;
+.label:hover {
+  letter-spacing: 2px;
+  background: transparent;
+  box-shadow: inset 0 -54px 0 0 rgb(59, 60, 61);
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.ticket {
+  /* border: black solid 1px; */
+  margin: 10px;
+  padding: 20px;
+  background: #8e9eab; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #d3dbdd,
+    #92969b
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #d6dcdd,
+    #adb3b8
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  border-radius: 8px;
+}
+
+.ticket:hover .hideTicketButton {
+  display: inline;
+  border: none;
+  background: transparent;
+  font-size: large;
+}
+
+.hideTicketButton {
+  display: none;
+  margin: 0;
+  padding: 0;
+}
+
+.close-modal {
+  display: inline;
+  border: none;
+  background: transparent;
+}
+
+.close-modal:hover {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.modal {
+  font-family: "Nanum Gothic", sans-serif;
+}
+
+.hideTicketButton:hover {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.ticket-head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px;
+  margin-bottom: 20px;
+}
+
+h3 {
+  display: inline;
+}
+
+#restoreHideTickets {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+#restoreHideTickets:hover {
+  color: rgb(41, 8, 185);
+}
+
+.searchArea {
+  text-align: center;
+  padding: 20px;
+}
+
+#searchInput {
+  background: none;
+  border: rgb(51, 50, 50) solid 1px;
+  border-radius: 25px;
+  height: 30px;
+  width: 30%;
+  font-size: 20px;
+  padding-left: 15px;
+}
+
+.results {
+  color: #797b7c;
+}
+
+.ticket-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.no-results {
+  display: flex;
+  justify-content: center;
+}
+
+.plus {
+  height: 40px;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  background: transparent;
+  cursor: pointer;
 }
