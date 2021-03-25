@@ -1,4 +1,4 @@
-# ![Scale-Up Velocity](./readme-files/logo-main.png) Final 2/5 - Ticket Manager
+# Final 2/5 - Ticket Manager
 
 This project will include most of the topics we have learnt so far.
 This repository includes a basic skeleton with automated tests, use it for you submissions.

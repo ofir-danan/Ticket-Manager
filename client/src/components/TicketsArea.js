@@ -10,16 +10,17 @@ const TicketsArea = ({
 }) => {
   return (
     <div>
-      {tickets?.map((ticket, i) => (
-        <TicketCard
-          key={i}
-          ticket={ticket}
-          hidden={hidden}
-          hiddenTickets={hiddenTickets}
-          restore={restore}
-          getLabelTickets={getLabelTickets}
-        />
-      ))}
+      {tickets &&
+        tickets.map((ticket, i) => (
+          <TicketCard
+            key={i}
+            ticket={ticket}
+            hidden={hidden}
+            hiddenTickets={hiddenTickets}
+            restore={restore}
+            getLabelTickets={getLabelTickets}
+          />
+        ))}
     </div>
   );
 };

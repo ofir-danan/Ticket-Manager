@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import shield from "../images/shield.png";
 
 const TicketCard = ({
   ticket,
@@ -24,21 +25,37 @@ const TicketCard = ({
   date = date.toDateString() + " - " + date.toISOString().slice(11, 16);
   return (
     <div key={ticket._id} className={hide ? "hide-ticket" : "ticket"}>
-      <div>
-        <h3>{ticket.title}</h3>{" "}
-        <button className="hideTicketButton" onClick={hideTicket}>
-          Hide
-        </button>{" "}
+      <div className="ticket-head">
+        <span>
+          {ticket.done && (
+            <img style={{ height: 30, marginRight: 10 }} src={shield} />
+          )}
+          <h3>{ticket.title}</h3>
+        </span>
+        <span>
+          <button className="hideTicketButton" onClick={hideTicket}>
+            Hide
+          </button>
+        </span>
       </div>
       <p>{ticket.content}</p>
-      <p>
-        <span>{ticket.userEmail}</span> | {<span>{date}</span>} |{" "}
-        {ticket.labels &&
-          ticket.labels.map((label) => (
-            <button className="label" onClick={() => getLabelTickets(label)}>
-              {label}
-            </button>
-          ))}
+      <p className="ticket-footer">
+        <span>
+          <span>{ticket.userEmail}</span> | {<span>{date}</span>}{" "}
+        </span>
+        {ticket.labels && (
+          <span>
+            {ticket.labels.map((label) => (
+              <button
+                className="label"
+                key={label}
+                onClick={() => getLabelTickets(label)}
+              >
+                {label}
+              </button>
+            ))}
+          </span>
+        )}
       </p>
     </div>
   );

@@ -64,4 +64,21 @@ router.patch("/:ticketId/undone", (req, res) => {
   }
 });
 
+router.post("/add", (req, res) => {
+  try {
+    const body = req.body;
+    const ticket = new Ticket({
+      title: body.title,
+      content: body.content,
+      userEmail: body.userEmail,
+    });
+    ticket.save().then((savedTicket) => {
+      res.status(200).json(savedTicket);
+    });
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+});
+
 module.exports = router;
