@@ -26,7 +26,11 @@ const TicketCard = ({ ticket, hidden, hiddenTickets, restore }) => {
       </div>
       <p>{ticket.content}</p>
       <p>
-        <span>{ticket.userEmail}</span> | {<span>{date}</span>}
+        <span>{ticket.userEmail}</span> | {<span>{date}</span>} |{" "}
+        {ticket.labels &&
+          ticket.labels.map((label) => (
+            <button className="label">{label}</button>
+          ))}
       </p>
     </div>
   );

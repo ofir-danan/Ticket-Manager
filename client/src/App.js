@@ -26,17 +26,24 @@ function App() {
 
   const onSearchChange = async (e) => {
     setSearch(e.target.value);
-    const { data } = await axios.get(`api/tickets?searchText=${search}`);
-    setTickets(data);
   };
 
   useEffect(() => {
-    const fetcTickets = async () => {
-      const { data } = await axios.get("api/tickets");
+    const fetchFilteredTickets = async () => {
+      const { data } = await axios.get(`/api/tickets?searchText=${search}`);
       setTickets(data);
     };
-    fetcTickets();
+    fetchFilteredTickets();
+  }, [search]);
+
+  useEffect(() => {
+    const fetcAllTickets = async () => {
+      const { data } = await axios.get("/api/tickets");
+      setTickets(data);
+    };
+    fetcAllTickets();
   }, []);
+
   return (
     <div>
       <Search value={search} onChange={onSearchChange} />
