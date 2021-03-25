@@ -3,29 +3,55 @@ import "./App.css";
 import Search from "./components/Search";
 import axios from "axios";
 import TicketsArea from "./components/TicketsArea";
+import Results from "./components/Results";
 
 function App() {
   const [search, setSearch] = useState("");
   const [tickets, setTickets] = useState([]);
+  const [hidden, setHidden] = useState(false);
+  const [restore, setRestore] = useState(false);
+  const [hiddenCounter, setHiddenCounter] = useState(0);
 
-  const onSearchChange = (e) => {
+  const hiddenTickets = () => {
+    setHidden(true);
+    setRestore(false);
+    setHiddenCounter((prevState) => prevState + 1);
+  };
+
+  const restoreHiddenTickets = () => {
+    setHidden(false);
+    setRestore(true);
+    setHiddenCounter(0);
+  };
+
+  const onSearchChange = async (e) => {
     setSearch(e.target.value);
+    const { data } = await axios.get(`api/tickets?searchText=${search}`);
+    setTickets(data);
   };
 
-  const getAllTickets = async () => {
-    let ticketsArray = [];
-    let { data } = await axios.get("api/tickets");
-    console.log(data);
-    ticketsArray.push(data);
-    setTickets(ticketsArray);
-    console.log(tickets);
-  };
-
-  useEffect(() => getAllTickets);
+  useEffect(() => {
+    const fetcTickets = async () => {
+      const { data } = await axios.get("api/tickets");
+      setTickets(data);
+    };
+    fetcTickets();
+  }, []);
   return (
     <div>
       <Search value={search} onChange={onSearchChange} />
-      <TicketsArea tickets={tickets} />
+      <Results
+        hidden={hidden}
+        restoreHiddenTickets={restoreHiddenTickets}
+        hiddenCounter={hiddenCounter}
+        tickets={tickets}
+      />
+      <TicketsArea
+        tickets={tickets}
+        hidden={hidden}
+        hiddenTickets={hiddenTickets}
+        restore={restore}
+      />
     </div>
   );
 }

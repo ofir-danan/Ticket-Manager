@@ -4,7 +4,7 @@ const Search = ({ value, onChange }) => {
   return (
     <div>
       <input
-        id="search"
+        id="searchInput"
         placeholder="Search here..."
         value={value}
         onChange={onChange}

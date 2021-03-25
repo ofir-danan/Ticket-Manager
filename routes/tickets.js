@@ -6,7 +6,6 @@ router.get("/", (req, res) => {
     const searchText = req.query.searchText;
     const regex = RegExp(searchText, "i");
     Ticket.find({ title: { $regex: regex } }).then((tickets) => {
-      console.log(tickets.length);
       res.status(200).json(tickets);
     });
   } catch (error) {
